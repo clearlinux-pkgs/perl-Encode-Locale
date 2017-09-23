@@ -4,7 +4,7 @@
 #
 Name     : perl-Encode-Locale
 Version  : 1.05
-Release  : 13
+Release  : 14
 URL      : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Source0  : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Summary  : 'Determine the locale encoding'
@@ -64,7 +64,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.0/Encode/Locale.pm
+/usr/lib/perl5/site_perl/5.26.1/Encode/Locale.pm
 
 %files doc
 %defattr(-,root,root,-)
