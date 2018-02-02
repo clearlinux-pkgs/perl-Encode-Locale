@@ -4,7 +4,7 @@
 #
 Name     : perl-Encode-Locale
 Version  : 1.05
-Release  : 14
+Release  : 15
 URL      : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Source0  : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Summary  : 'Determine the locale encoding'
