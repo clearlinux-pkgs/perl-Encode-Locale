@@ -4,13 +4,13 @@
 #
 Name     : perl-Encode-Locale
 Version  : 1.05
-Release  : 16
-URL      : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
-Source0  : http://www.cpan.org/CPAN/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
+Release  : 17
+URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Summary  : 'Determine the locale encoding'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Encode-Locale-doc
+Requires: perl-Encode-Locale-man
 
 %description
 Encode-Locale
@@ -19,12 +19,12 @@ The purpose of this Perl module is try determine what encodings should be used
 when interfacing to various external interfaces.  You will need perl-5.8 or
 better to use this module.
 
-%package doc
-Summary: doc components for the perl-Encode-Locale package.
-Group: Documentation
+%package man
+Summary: man components for the perl-Encode-Locale package.
+Group: Default
 
-%description doc
-doc components for the perl-Encode-Locale package.
+%description man
+man components for the perl-Encode-Locale package.
 
 
 %prep
@@ -37,7 +37,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 else
 %{__perl} Build.PL
 ./Build
@@ -66,6 +66,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %defattr(-,root,root,-)
 /usr/lib/perl5/site_perl/5.26.1/Encode/Locale.pm
 
-%files doc
+%files man
 %defattr(-,root,root,-)
-%doc /usr/share/man/man3/*
+/usr/share/man/man3/Encode::Locale.3
