@@ -4,13 +4,13 @@
 #
 Name     : perl-Encode-Locale
 Version  : 1.05
-Release  : 19
+Release  : 20
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Summary  : 'Determine the locale encoding'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Encode-Locale-man
+BuildRequires : buildreq-cpan
 
 %description
 Encode-Locale
@@ -19,12 +19,13 @@ The purpose of this Perl module is try determine what encodings should be used
 when interfacing to various external interfaces.  You will need perl-5.8 or
 better to use this module.
 
-%package man
-Summary: man components for the perl-Encode-Locale package.
-Group: Default
+%package dev
+Summary: dev components for the perl-Encode-Locale package.
+Group: Development
+Provides: perl-Encode-Locale-devel = %{version}-%{release}
 
-%description man
-man components for the perl-Encode-Locale package.
+%description dev
+dev components for the perl-Encode-Locale package.
 
 
 %prep
@@ -53,9 +54,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -64,8 +65,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Encode/Locale.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Encode/Locale.pm
 
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Encode::Locale.3
