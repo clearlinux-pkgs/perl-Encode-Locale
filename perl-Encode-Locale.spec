@@ -4,10 +4,10 @@
 #
 Name     : perl-Encode-Locale
 Version  : 1.05
-Release  : 27
+Release  : 28
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
-Summary  : 'Determine the locale encoding'
+Summary  : Determine the locale encoding
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 BuildRequires : buildreq-cpan
@@ -23,6 +23,7 @@ better to use this module.
 Summary: dev components for the perl-Encode-Locale package.
 Group: Development
 Provides: perl-Encode-Locale-devel = %{version}-%{release}
+Requires: perl-Encode-Locale = %{version}-%{release}
 
 %description dev
 dev components for the perl-Encode-Locale package.
