@@ -4,12 +4,13 @@
 #
 Name     : perl-Encode-Locale
 Version  : 1.05
-Release  : 30
+Release  : 31
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz
-Summary  : Determine the locale encoding
+Summary  : 'Determine the locale encoding'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
+Requires: perl-Encode-Locale-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -29,14 +30,24 @@ Requires: perl-Encode-Locale = %{version}-%{release}
 dev components for the perl-Encode-Locale package.
 
 
+%package perl
+Summary: perl components for the perl-Encode-Locale package.
+Group: Default
+Requires: perl-Encode-Locale = %{version}-%{release}
+
+%description perl
+perl components for the perl-Encode-Locale package.
+
+
 %prep
 %setup -q -n Encode-Locale-1.05
+cd %{_builddir}/Encode-Locale-1.05
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -46,7 +57,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -66,8 +77,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Encode/Locale.pm
 
 %files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Encode::Locale.3
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Encode/Locale.pm
